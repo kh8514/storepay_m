@@ -1,6 +1,12 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+#import <React/CoreModulesPlugins.h>
+#import <React/RCTCxxBridgeDelegate.h>
+#import <React/RCTSurfacePresenter.h>
+#import <React/RCTSurfacePresenterBridgeAdapter.h>
 
 @implementation AppDelegate
 

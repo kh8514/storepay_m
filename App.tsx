@@ -5,113 +5,81 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import React, {useCallback, useRef} from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {WebView, WebViewMessageEvent} from 'react-native-webview';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const webviewRef = useRef<WebView>(null);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  // 웹뷰에서 메시지 받기
+  const handleMessage = useCallback((event: WebViewMessageEvent) => {
+    const message = event.nativeEvent.data;
+    console.log('Message from WebView:', message);
+  }, []);
+  /*
+  const handleLoadStart = (event: WebViewNavigation) => {
+    console.log('Loading started:', event.url);
   };
 
+  const handleLoadEnd = (event: WebViewNavigation) => {
+    console.log('Loading finished:', event.url);
+  };
+
+  const handleError = (syntheticEvent: any) => {
+    const {nativeEvent} = syntheticEvent;
+    console.warn('WebView error:', nativeEvent);
+  };
+*/
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <SafeAreaView style={styles.container}>
+      <WebView
+        style={styles.webview}
+        ref={webviewRef}
+        source={{uri: 'http://172.30.1.13:8091'}}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        startInLoadingState={true}
+        scalesPageToFit={true}
+        // 텍스트 입력 관련 추가 속성
+        keyboardDisplayRequiresUserAction={false}
+        allowsInlineMediaPlayback={true}
+        mediaPlaybackRequiresUserAction={false}
+        // iOS에서 텍스트 입력 처리 개선
+        originWhitelist={['*']}
+        // 텍스트 입력 관련 추가 설정
+        autoManageStatusBarEnabled={false}
+        bounces={false}
+        scrollEnabled={true}
+        // iOS 특화 설정
+        allowsBackForwardNavigationGestures={true}
+        // 로딩 시작 이벤트
+        onLoadStart={syntheticEvent => {
+          const {nativeEvent} = syntheticEvent;
+          console.log('Loading started', nativeEvent.url);
+        }}
+        // 로딩 완료 이벤트
+        onLoad={syntheticEvent => {
+          const {nativeEvent} = syntheticEvent;
+          console.log('Loaded', nativeEvent.url);
+        }}
+        // 에러 이벤트
+        onError={syntheticEvent => {
+          const {nativeEvent} = syntheticEvent;
+          console.warn('WebView error: ', nativeEvent);
+        }}
+        onMessage={handleMessage}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  webview: {
+    flex: 1,
   },
 });
 
