@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import SQLite, {SQLiteDatabase} from 'react-native-sqlite-storage';
@@ -197,44 +197,62 @@ function App(): React.JSX.Element {
     };
   }, []);
 
+  const [statusBarStyle, setStatusBarStyle] = useState('light-content');
+
+  const handleNavigateionStateChange = (navState: any) => {
+    console.log('nav url :: ', navState.url);
+    if (navState.url.includes('/login')) {
+      setStatusBarStyle('white');
+    } else {
+      setStatusBarStyle('#4371ea');
+    }
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <WebView
-        style={styles.webview}
-        ref={webviewRef}
-        source={{uri: 'http://172.30.1.31:8096'}}
-        javaScriptEnabled={true}
-        domStorageEnabled={true}
-        startInLoadingState={true}
-        scalesPageToFit={true}
-        // 텍스트 입력 관련 추가 속성
-        keyboardDisplayRequiresUserAction={false}
-        allowsInlineMediaPlayback={true}
-        mediaPlaybackRequiresUserAction={false}
-        // iOS에서 텍스트 입력 처리 개선
-        originWhitelist={['*']}
-        // 텍스트 입력 관련 추가 설정
-        autoManageStatusBarEnabled={false}
-        bounces={false}
-        scrollEnabled={true}
-        // iOS 특화 설정
-        allowsBackForwardNavigationGestures={true}
-        // 로딩 시작 이벤트
-        onLoadStart={syntheticEvent => {
-          const {nativeEvent} = syntheticEvent;
-          console.log('Loading started', nativeEvent.url);
-        }}
-        // 로딩 완료 이벤트
-        onLoad={syntheticEvent => {
-          const {nativeEvent} = syntheticEvent;
-          console.log('Loaded', nativeEvent.url);
-        }}
-        onLoadEnd={handleLoadEnd}
-        // 에러 이벤트
-        onError={handleError}
-        onMessage={handleMessage}
+    <>
+      <SafeAreaView
+        style={(styles.container, {backgroundColor: statusBarStyle})}
       />
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <WebView
+          style={styles.webview}
+          ref={webviewRef}
+          source={{uri: 'http://172.30.1.31:8096'}}
+          javaScriptEnabled={true}
+          domStorageEnabled={true}
+          startInLoadingState={true}
+          scalesPageToFit={true}
+          // 텍스트 입력 관련 추가 속성
+          keyboardDisplayRequiresUserAction={false}
+          allowsInlineMediaPlayback={true}
+          mediaPlaybackRequiresUserAction={false}
+          // iOS에서 텍스트 입력 처리 개선
+          originWhitelist={['*']}
+          // 텍스트 입력 관련 추가 설정
+          autoManageStatusBarEnabled={false}
+          bounces={false}
+          scrollEnabled={true}
+          // iOS 특화 설정
+          allowsBackForwardNavigationGestures={true}
+          // 로딩 시작 이벤트
+          onLoadStart={syntheticEvent => {
+            const {nativeEvent} = syntheticEvent;
+            console.log('Loading started', nativeEvent.url);
+          }}
+          // 로딩 완료 이벤트
+          onLoad={syntheticEvent => {
+            const {nativeEvent} = syntheticEvent;
+            console.log('Loaded', nativeEvent.url);
+          }}
+          onLoadEnd={handleLoadEnd}
+          // 에러 이벤트
+          onError={handleError}
+          onMessage={handleMessage}
+          onNavigationStateChange={handleNavigateionStateChange}
+        />
+      </SafeAreaView>
+      <SafeAreaView style={{backgroundColor: '#f2f5fb'}} />
+    </>
   );
 }
 
