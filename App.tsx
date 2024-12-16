@@ -10,6 +10,30 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import SQLite, {SQLiteDatabase} from 'react-native-sqlite-storage';
 import CryptoJS from 'crypto-js';
+import Config from 'react-native-config';
+
+function encryptAES256(data: string, key: string): string {
+  return CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(key), {
+    iv: CryptoJS.enc.Utf8.parse(key.slice(0, 16)),
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7,
+  }).toString();
+}
+
+function decryptAES256(encryptedData: string, key: string): string {
+  const bytes = CryptoJS.AES.decrypt(
+    encryptedData,
+    CryptoJS.enc.Utf8.parse(key),
+    {
+      iv: CryptoJS.enc.Utf8.parse(key.slice(0, 16)),
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
+    },
+  );
+  return bytes.toString(CryptoJS.enc.Utf8);
+}
+
+const key = Config.REACT_APP_SECURITY_KEY;
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(true);
@@ -17,17 +41,6 @@ SQLite.enablePromise(true);
 let db: SQLiteDatabase;
 const securityKey: string = process.env.REACT_APP_SECURITY_KEY || 'storepay';
 console.log('securityKey :: ', securityKey);
-
-function encryptData(data: string | undefined) {
-  if (!data) return data;
-  return CryptoJS.AES.encrypt(data, securityKey).toString();
-}
-
-function decryptData(data: string | undefined) {
-  if (!data) return data;
-  const bytes = CryptoJS.AES.decrypt(data, securityKey);
-  return bytes.toString(CryptoJS.enc.Utf8);
-}
 
 function App(): React.JSX.Element {
   const webviewRef = useRef<WebView>(null);
@@ -77,24 +90,16 @@ function App(): React.JSX.Element {
   // 사용자 삽입 함수
   const insertCard = async (data: any) => {
     const {params} = data;
-    console.log('Insert values:', [
-      params.id,
-      params.cardNm,
-      params.cardNo,
-      params.cardNickNm,
-      params.password,
-      params.expiryDate,
-      params.birthdate,
-    ]);
+    //console.log('암호화 카드넘버 :: ', encryptAES256(params.cardNo, key));
     try {
       const result = await db.executeSql(
         'INSERT INTO Card (id, card_name, card_no, card_nick_name, pw, expiry_date, birth_date) VALUES (?,?,?,?,?,?,?);',
         [
           params.id,
           params.cardNm,
-          params.cardNo,
+          encryptAES256(params.cardNo, key),
           params.cardNickNm,
-          params.password,
+          encryptAES256(params.password, key),
           params.expiryDate,
           params.birthdate,
         ],
@@ -134,10 +139,11 @@ function App(): React.JSX.Element {
       const card = [];
       for (let i = 0; i < results.rows.length; i++) {
         let data = results.rows.item(i);
+        //console.log('복호화 카드넘버 :: ', decryptAES256(data.card_no, key));
         data = {
           ...data,
-          card_no: data.card_no,
-          pw: data.pw,
+          card_no: decryptAES256(data.card_no, key),
+          pw: decryptAES256(data.pw, key),
         };
         card.push(data);
       }
@@ -244,7 +250,6 @@ function App(): React.JSX.Element {
   useEffect(() => {
     initDB();
     // 클린업: 컴포넌트 언마운트 시 데이터베이스 닫기
-    fetchSelect();
     return () => {
       if (db) {
         db.close()
