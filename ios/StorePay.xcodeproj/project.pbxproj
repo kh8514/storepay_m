@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* StorePayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* StorePayTests.m */; };
-		066239E111DF523133EE48C3 /* libPods-StorePay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6859895569FA081D6EE70F6C /* libPods-StorePay.a */; };
 		072D1164767C7D44962D43FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		268CA27402B76D085C6A8E49 /* libPods-StorePay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2DD194FAF11D915483B306 /* libPods-StorePay.a */; };
+		61B8F1EE2D0885E200F9816C /* storage.db in Resources */ = {isa = PBXBuildFile; fileRef = 61B8F1EC2D0885E200F9816C /* storage.db */; };
+		61B8F1F02D088C5F00F9816C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B8F1EF2D088C5F00F9816C /* libsqlite3.tbd */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		C85E133AF5B80C2269EAF60D /* libPods-StorePay-StorePayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E91C4EE041FF495BB964DC /* libPods-StorePay-StorePayTests.a */; };
+		C395572E44313393436628CB /* libPods-StorePay-StorePayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 186621CF6D50C64793A5A765 /* libPods-StorePay-StorePayTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +33,6 @@
 		00E356EE1AD99517003FC87E /* StorePayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorePayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* StorePayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StorePayTests.m; sourceTree = "<group>"; };
-		030D796501873E6EBF458C24 /* Pods-StorePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay.release.xcconfig"; path = "Target Support Files/Pods-StorePay/Pods-StorePay.release.xcconfig"; sourceTree = "<group>"; };
-		05E91C4EE041FF495BB964DC /* libPods-StorePay-StorePayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StorePay-StorePayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* StorePay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorePay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = StorePay/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = StorePay/AppDelegate.mm; sourceTree = "<group>"; };
@@ -40,12 +40,16 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = StorePay/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = StorePay/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = StorePay/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		6859895569FA081D6EE70F6C /* libPods-StorePay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StorePay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		186621CF6D50C64793A5A765 /* libPods-StorePay-StorePayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StorePay-StorePayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B8F1EC2D0885E200F9816C /* storage.db */ = {isa = PBXFileReference; lastKnownFileType = text; path = storage.db; sourceTree = "<group>"; };
+		61B8F1EF2D088C5F00F9816C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		80A31952B65164D64A6DF2E6 /* Pods-StorePay-StorePayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay-StorePayTests.debug.xcconfig"; path = "Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = StorePay/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C8D7705F8519CB019986241B /* Pods-StorePay-StorePayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay-StorePayTests.release.xcconfig"; path = "Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests.release.xcconfig"; sourceTree = "<group>"; };
-		E5BB345A7ED2371EE2BD4933 /* Pods-StorePay-StorePayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay-StorePayTests.debug.xcconfig"; path = "Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		97FADE7D421C387193465CF3 /* Pods-StorePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay.release.xcconfig"; path = "Target Support Files/Pods-StorePay/Pods-StorePay.release.xcconfig"; sourceTree = "<group>"; };
+		C9194DA420A1110C3400983F /* Pods-StorePay-StorePayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay-StorePayTests.release.xcconfig"; path = "Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests.release.xcconfig"; sourceTree = "<group>"; };
+		CF2DD194FAF11D915483B306 /* libPods-StorePay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StorePay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9B6ECFF1FF6A700338F05C1 /* Pods-StorePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay.debug.xcconfig"; path = "Target Support Files/Pods-StorePay/Pods-StorePay.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F12B9D4B2396BCBAB576FA96 /* Pods-StorePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorePay.debug.xcconfig"; path = "Target Support Files/Pods-StorePay/Pods-StorePay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C85E133AF5B80C2269EAF60D /* libPods-StorePay-StorePayTests.a in Frameworks */,
+				C395572E44313393436628CB /* libPods-StorePay-StorePayTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				066239E111DF523133EE48C3 /* libPods-StorePay.a in Frameworks */,
+				61B8F1F02D088C5F00F9816C /* libsqlite3.tbd in Frameworks */,
+				268CA27402B76D085C6A8E49 /* libPods-StorePay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,7 @@
 		13B07FAE1A68108700A75B9A /* StorePay */ = {
 			isa = PBXGroup;
 			children = (
+				61B8F1ED2D0885E200F9816C /* www */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -102,11 +108,20 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61B8F1EF2D088C5F00F9816C /* libsqlite3.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6859895569FA081D6EE70F6C /* libPods-StorePay.a */,
-				05E91C4EE041FF495BB964DC /* libPods-StorePay-StorePayTests.a */,
+				CF2DD194FAF11D915483B306 /* libPods-StorePay.a */,
+				186621CF6D50C64793A5A765 /* libPods-StorePay-StorePayTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61B8F1ED2D0885E200F9816C /* www */ = {
+			isa = PBXGroup;
+			children = (
+				61B8F1EC2D0885E200F9816C /* storage.db */,
+			);
+			path = www;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -143,10 +158,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F12B9D4B2396BCBAB576FA96 /* Pods-StorePay.debug.xcconfig */,
-				030D796501873E6EBF458C24 /* Pods-StorePay.release.xcconfig */,
-				E5BB345A7ED2371EE2BD4933 /* Pods-StorePay-StorePayTests.debug.xcconfig */,
-				C8D7705F8519CB019986241B /* Pods-StorePay-StorePayTests.release.xcconfig */,
+				E9B6ECFF1FF6A700338F05C1 /* Pods-StorePay.debug.xcconfig */,
+				C9194DA420A1110C3400983F /* Pods-StorePay-StorePayTests.release.xcconfig */,
+				97FADE7D421C387193465CF3 /* Pods-StorePay.release.xcconfig */,
+				80A31952B65164D64A6DF2E6 /* Pods-StorePay-StorePayTests.debug.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -158,12 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "StorePayTests" */;
 			buildPhases = (
-				A41D3876D8054ABCA03E7CA0 /* [CP] Check Pods Manifest.lock */,
+				68A75417826076AB0DD47289 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3839EF7CC59AF5DBD9F9F2EB /* [CP] Embed Pods Frameworks */,
-				B614DB7A3A102EEDC5429998 /* [CP] Copy Pods Resources */,
+				69B152E34D6F3DA376A972C4 /* [CP] Embed Pods Frameworks */,
+				FC12EBDB7369377A182759BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,13 +194,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "StorePay" */;
 			buildPhases = (
-				94633441C550C1F15B5FAA70 /* [CP] Check Pods Manifest.lock */,
+				9A791B3BFC75D67A57AE8C36 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				6A73DACA71D44613BBBB1A17 /* [CP] Embed Pods Frameworks */,
-				E4E361DC19B497148D92CA3D /* [CP] Copy Pods Resources */,
+				3B135D0DAACC671A1452F38C /* [CP] Embed Pods Frameworks */,
+				AE4ED7591AAC26BD70E633BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +262,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				072D1164767C7D44962D43FE /* PrivacyInfo.xcprivacy in Resources */,
+				61B8F1EE2D0885E200F9816C /* storage.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,24 +285,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		3839EF7CC59AF5DBD9F9F2EB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A73DACA71D44613BBBB1A17 /* [CP] Embed Pods Frameworks */ = {
+		3B135D0DAACC671A1452F38C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,29 +302,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay/Pods-StorePay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		94633441C550C1F15B5FAA70 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StorePay-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A41D3876D8054ABCA03E7CA0 /* [CP] Check Pods Manifest.lock */ = {
+		68A75417826076AB0DD47289 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,24 +324,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B614DB7A3A102EEDC5429998 /* [CP] Copy Pods Resources */ = {
+		69B152E34D6F3DA376A972C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E4E361DC19B497148D92CA3D /* [CP] Copy Pods Resources */ = {
+		9A791B3BFC75D67A57AE8C36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StorePay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE4ED7591AAC26BD70E633BE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,6 +378,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay/Pods-StorePay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC12EBDB7369377A182759BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorePay-StorePayTests/Pods-StorePay-StorePayTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +430,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5BB345A7ED2371EE2BD4933 /* Pods-StorePay-StorePayTests.debug.xcconfig */;
+			baseConfigurationReference = 80A31952B65164D64A6DF2E6 /* Pods-StorePay-StorePayTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -441,7 +457,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8D7705F8519CB019986241B /* Pods-StorePay-StorePayTests.release.xcconfig */;
+			baseConfigurationReference = C9194DA420A1110C3400983F /* Pods-StorePay-StorePayTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -465,7 +481,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F12B9D4B2396BCBAB576FA96 /* Pods-StorePay.debug.xcconfig */;
+			baseConfigurationReference = E9B6ECFF1FF6A700338F05C1 /* Pods-StorePay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -496,12 +512,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 030D796501873E6EBF458C24 /* Pods-StorePay.release.xcconfig */;
+			baseConfigurationReference = 97FADE7D421C387193465CF3 /* Pods-StorePay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A6C28Q7D6F;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = StorePay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StorePay;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
