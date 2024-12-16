@@ -6,15 +6,28 @@
  */
 
 import React, {useEffect, useRef, useState} from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import SQLite, {SQLiteDatabase} from 'react-native-sqlite-storage';
+import CryptoJS from 'crypto-js';
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(true);
 
 let db: SQLiteDatabase;
-// 데이터베이스 열기 및 테이블 생성
+const securityKey: string = process.env.REACT_APP_SECURITY_KEY || 'storepay';
+console.log('securityKey :: ', securityKey);
+
+function encryptData(data: string | undefined) {
+  if (!data) return data;
+  return CryptoJS.AES.encrypt(data, securityKey).toString();
+}
+
+function decryptData(data: string | undefined) {
+  if (!data) return data;
+  const bytes = CryptoJS.AES.decrypt(data, securityKey);
+  return bytes.toString(CryptoJS.enc.Utf8);
+}
 
 function App(): React.JSX.Element {
   const webviewRef = useRef<WebView>(null);
@@ -27,7 +40,6 @@ function App(): React.JSX.Element {
       const query = 'DROP TABLE IF EXISTS Card;';
       await db.executeSql(query);
       */
-
       await db.executeSql(
         `CREATE TABLE IF NOT EXISTS Card (
             seq INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -56,7 +68,7 @@ function App(): React.JSX.Element {
       for (let i = 0; i < results.rows.length; i++) {
         fetchedUsers.push(results.rows.item(i));
       }
-      console.log('selected card :: ', fetchedUsers);
+      console.log('======= selected fetch card :: ', fetchedUsers);
     } catch (error) {
       console.error(error);
     }
@@ -90,51 +102,96 @@ function App(): React.JSX.Element {
       console.log('User inserted:', result);
       console.log('Success', 'User inserted successfully');
       console.log('select id :: ', params.id);
-      selectCard(params.id);
+      selectCard(params.id, 'insert');
     } catch (error) {
       console.error('Failed to insert user:', error);
       sendDataToWebView({result: 'failed'});
     }
   };
 
-  const selectCard = async (id: string) => {
+  const fetchSelect = async () => {
+    const [results] = await db.executeSql('SELECT * FROM Card;');
+    const card = [];
+    for (let i = 0; i < results.rows.length; i++) {
+      let data = results.rows.item(i);
+      data = {
+        ...data,
+        card_no: data.card_no,
+        pw: data.pw,
+      };
+      card.push(data);
+    }
+
+    console.log('fetchSelect card :', card);
+  };
+
+  const selectCard = async (id: string, gb: string | undefined) => {
     try {
       const [results] = await db.executeSql(
-        'SELECT card_name, card_no, card_nick_name, pw, expiry_Date, birth_date  FROM Card where id=?;',
+        'SELECT seq, id, card_name, card_no, card_nick_name, pw, expiry_Date, birth_date  FROM Card where id=?;',
         [id],
       );
       const card = [];
       for (let i = 0; i < results.rows.length; i++) {
-        card.push(results.rows.item(i));
+        let data = results.rows.item(i);
+        data = {
+          ...data,
+          card_no: data.card_no,
+          pw: data.pw,
+        };
+        card.push(data);
       }
 
       console.log('card :', card);
-      sendDataToWebView(card);
+
+      const resultData = {
+        gb: gb || 'select',
+        result: 'success',
+        data: card,
+      };
+      sendDataToWebView(resultData);
       return card;
     } catch (error) {
       console.error('Failed to fetch Users:', error);
+      const resultData = {
+        gb: gb || 'select',
+        result: 'failed',
+      };
+      sendDataToWebView(resultData);
     }
   };
 
-  const deleteCard = async (params: {id: string; cardNo: string}) => {
-    const {id, cardNo} = params;
+  const deleteCard = async (params: {seq: string; id: string}) => {
+    const {id, seq} = params;
     try {
       const [result] = await db.executeSql(
-        'DELETE FROM card WHERE id=? and card_no=?;',
-        [id, cardNo],
+        'DELETE FROM card WHERE id=? and seq=?;',
+        [id, seq],
       );
       if (result.rowsAffected > 0) {
         console.log('Delete Success');
+        selectCard(id, 'delete');
       } else {
         console.log(`No card found `);
+        const resultData = {
+          gb: 'delete',
+          result: 'failed',
+        };
+        sendDataToWebView(resultData);
       }
     } catch (error) {
       console.log('Failed to delete card');
+      const resultData = {
+        gb: 'delete',
+        result: 'failed',
+      };
+      sendDataToWebView(resultData);
     }
   };
 
   // WebView로 데이터 전달
   const sendDataToWebView = (data: any) => {
+    console.log('sendDataToWebView :: ', data);
     if (webviewRef.current) {
       webviewRef.current.injectJavaScript(`
         (function() {
@@ -164,7 +221,7 @@ function App(): React.JSX.Element {
 
       case 'searchCard':
         console.log('search');
-        const card = selectCard(data.params);
+        const card = selectCard(data.params, 'select');
         console.log('card :: ', card);
         break;
 
@@ -180,14 +237,14 @@ function App(): React.JSX.Element {
   };
 
   const handleLoadEnd = () => {
-    selectCard('test');
+    selectCard('test', 'select');
   };
 
   // 초기화
   useEffect(() => {
     initDB();
     // 클린업: 컴포넌트 언마운트 시 데이터베이스 닫기
-
+    fetchSelect();
     return () => {
       if (db) {
         db.close()
